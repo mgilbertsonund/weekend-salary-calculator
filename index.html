@@ -26,10 +26,10 @@
         <option value="Regional Manager">Regional Manager</option>
       </select>
       <input id="annual-salary" type="number" placeholder="Annual Salary" data-testid="annualSalaryInput"/>
-      <button onclick="submitEmployeeData()">Submit</button>
+      <button onclick="submitEmployeeData()" data-testid="submitButton">Submit</button>
     </form>
     <h2>Employees</h2>
-    <table>
+    <table id="employee-data-table">
       <thead>
         <tr>
           <th>First Name</th>
@@ -44,10 +44,14 @@
   </main>
   <footer>
     <p>Total Monthly</p>
-    <table>
+    <table id="footer-table">
       <thead>
         <tr>
+          <th></th>
+          <th></th>
+          <th></th>
           <th>Total Monthly</th>
+          <th id="over-budget">over budget</th>
           <th></th>
         </tr>
       </thead>
