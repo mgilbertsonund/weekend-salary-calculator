@@ -1,5 +1,7 @@
 console.log('hello');
 
+let monthlySalary = 0;
+
 function submitEmployeeData(event) {
     event.preventDefault();
     // console.log('submit new employee data');
@@ -10,6 +12,10 @@ function submitEmployeeData(event) {
     let jobTitle = document.querySelector('#job-title').value;
     let annualSalary = document.querySelector('#annual-salary').value;
     let employeeTable = document.querySelector('#employee-data-table');
+
+    monthlySalary += Number(annualSalary);
+    // console.log(monthlySalary);
+    monthlyBudget();
 
     // console.log(firstName);
     // console.log(lastName);
@@ -41,4 +47,12 @@ function submitEmployeeData(event) {
     document.querySelector('#id-number').value='';
     document.querySelector('#job-title').selectedIndex = 0;
     document.querySelector('#annual-salary').value='';
+
+}
+
+// console.log(monthlySalary);
+
+function monthlyBudget() {
+    let totalMonthly = document.querySelector('#monthly-salary-cost');
+    totalMonthly.innerHTML = Math.round(monthlySalary / 12);
 }
