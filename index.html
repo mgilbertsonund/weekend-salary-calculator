@@ -11,7 +11,7 @@
   </header>
   <main>
     <h2>Add Employee</h2>
-    <form onsubmit="submitEmployeeData(event)">
+    <form>
       <input id="first-name" placeholder="Frist Name"/>
       <input id="last-name" placeholder="Last Name"/>
       <input id="id-number" type="number" placeholder="ID Number"/>
@@ -26,11 +26,20 @@
         <option value="Regional Manager">Regional Manager</option>
       </select>
       <input id="annual-salary" type="number" placeholder="Annual Salary"/>
+      <button onclick="submitEmployeeData()">Submit</button>
     </form>
     <h2>Employees</h2>
   </main>
   <footer>
     <p>Total Monthly</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Total Monthly</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
   </footer>
 
   <script src="client.js"></script>
