@@ -12,11 +12,11 @@
   <main>
     <h2>Add Employee</h2>
     <form>
-      <input id="first-name" placeholder="Frist Name"/>
-      <input id="last-name" placeholder="Last Name"/>
-      <input id="id-number" type="number" placeholder="ID Number"/>
+      <input id="first-name" placeholder="Frist Name" data-testid="firstNameInput"/>
+      <input id="last-name" placeholder="Last Name" data-testid="lastNameInput"/>
+      <input id="id-number" type="number" placeholder="ID Number" data-testid="idInput"/>
       <!-- <input id="job-title" placeholder="Job Title"/> -->
-      <select id="job-title">
+      <select id="job-title" data-testid="titleInput">
         <option>Select a Job</option>
         <option value="Sales">Sales</option>
         <option value="HR">HR</option>
@@ -25,10 +25,22 @@
         <option value="Customer Service Representative">Customer Service Representative</option>
         <option value="Regional Manager">Regional Manager</option>
       </select>
-      <input id="annual-salary" type="number" placeholder="Annual Salary"/>
+      <input id="annual-salary" type="number" placeholder="Annual Salary" data-testid="annualSalaryInput"/>
       <button onclick="submitEmployeeData()">Submit</button>
     </form>
     <h2>Employees</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Annual Salary</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
   </main>
   <footer>
     <p>Total Monthly</p>
