@@ -11,10 +11,19 @@
   </header>
   <main>
     <h2>Add Employee</h2>
+    <form onsubmit="submitEmployeeData(event)">
+      <input id="first-name" placeholder="Frist Name"/>
+      <input id="last-name" placeholder="Last Name"/>
+      <input id="id-number" type="number" placeholder="ID Number"/>
+      <input id="job-title" placeholder="Job Title"/>
+      <input id="annual-salary" type="number" placeholder="Annual Salary"/>
+    </form>
     <h2>Employees</h2>
   </main>
   <footer>
     <p>Total Monthly</p>
   </footer>
+
+  <script src="client.js"></script>
 </body>
 </html>
