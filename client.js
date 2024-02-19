@@ -11,10 +11,18 @@ function submitEmployeeData(event) {
     let employeeID = document.querySelector('#id-number').value;
     let jobTitle = document.querySelector('#job-title').value;
     let annualSalary = document.querySelector('#annual-salary').value;
+    let annualSalaryFormatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0, 
+        minimumFractionDigits: 0, 
+    }).format(annualSalary);
     let employeeTable = document.querySelector('#employee-data-table');
 
-    monthlySalary += Number(annualSalary);
-    // console.log(monthlySalary);
+    annualSalary = Number(annualSalary);
+    monthlySalary = Number(monthlySalary);
+    monthlySalary += annualSalary;
+    console.log(monthlySalary);
     monthlyBudget();
 
     // console.log(firstName);
@@ -29,7 +37,7 @@ function submitEmployeeData(event) {
         <td>${lastName}</td>
         <td>${employeeID}</td>
         <td>${jobTitle}</td>
-        <td>${annualSalary}</td>
+        <td>${annualSalaryFormatted}</td>
         <td><button onclick="deleteRow(event)">Delete</button></td>
     </tr>
     `;
@@ -50,9 +58,13 @@ function submitEmployeeData(event) {
 
 }
 
-// console.log(monthlySalary);
-
 function monthlyBudget() {
-    let totalMonthly = document.querySelector('#monthly-salary-cost');
-    totalMonthly.innerHTML = Math.round(monthlySalary / 12);
+    let totalMonthly = Math.round(monthlySalary / 12);
+    let totalMonthlyFormatted = document.querySelector('#monthly-salary-cost');
+    totalMonthlyFormatted.innerHTML = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0, 
+        minimumFractionDigits: 0, 
+    }).format(totalMonthly);
 }

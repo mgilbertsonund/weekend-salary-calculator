@@ -13,9 +13,9 @@
     <div id="employee-form-div">
       <h2>Add Employee</h2>
       <form id="employee-form">
-        <input id="first-name" placeholder="Frist Name" data-testid="firstNameInput"/>
+        <input id="first-name" placeholder="First Name" data-testid="firstNameInput"/>
         <input id="last-name" placeholder="Last Name" data-testid="lastNameInput"/>
-        <input id="id-number" type="number" placeholder="ID Number" data-testid="idInput"/>
+        <input id="id-number" type="text" placeholder="ID Number" data-testid="idInput"/>
         <!-- <input id="job-title" placeholder="Job Title"/> -->
         <select id="job-title" data-testid="titleInput">
           <option>Select a Job</option>
@@ -26,7 +26,7 @@
           <option value="Customer Service Representative">Customer Service Representative</option>
           <option value="Regional Manager">Regional Manager</option>
         </select>
-        <input id="annual-salary" type="number" placeholder="Annual Salary" data-testid="annualSalaryInput"/>
+        <input id="annual-salary" type="text" placeholder="Annual Salary" data-testid="annualSalaryInput"/>
         <button onclick="submitEmployeeData(event)" data-testid="submitButton">Submit</button>
       </form>
     </div>
