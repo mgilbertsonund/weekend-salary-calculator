@@ -22,7 +22,7 @@ function submitEmployeeData(event) {
     annualSalary = Number(annualSalary);
     monthlySalary = Number(monthlySalary);
     monthlySalary += annualSalary;
-    console.log(monthlySalary);
+    // console.log(monthlySalary);
     monthlyBudget();
 
     // console.log(firstName);
@@ -67,4 +67,8 @@ function monthlyBudget() {
         maximumFractionDigits: 0, 
         minimumFractionDigits: 0, 
     }).format(totalMonthly);
+}
+
+function deleteRow(event) {
+    event.target.parentElement.parentElement.remove();
 }
