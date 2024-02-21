@@ -11,6 +11,7 @@ function submitEmployeeData(event) {
     let employeeID = document.querySelector('#id-number').value;
     let jobTitle = document.querySelector('#job-title').value;
     let annualSalary = document.querySelector('#annual-salary').value;
+    // make into a function
     let annualSalaryFormatted = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
