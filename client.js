@@ -20,21 +20,34 @@ function submitEmployeeData(event) {
     annualSalary = Number(annualSalary);
     monthlySalary = Number(monthlySalary);
     monthlySalary += annualSalary;
-    monthlyBudget();
+    monthlyBudget(monthlySalary);
 
     // clear inputs
     clearInputFields();
 }
 
-// function that returns the average monthly cost of salary
-function monthlyBudget() {
-    let totalMonthly = Math.round(monthlySalary / 12);
-    let totalMonthlyFormatted = document.querySelector('#monthly-salary-cost');
-    totalMonthlyFormatted.innerHTML = formatAnnualSalary(totalMonthly);
+// function that returns the average monthly cost of salary, and updates when deleteRow is clicked
+function monthlyBudget(salary) {
+    renderTotalMontly = document.querySelector('#monthly-salary-cost');
+    if(salary === monthlySalary) {
+        console.log('first if');
+        salary = Math.round(salary / 12);
+        renderTotalMontly.innerHTML = formatAnnualSalary(salary);
+    } else if(salary < monthlySalary && salary > 0) {
+        console.log('second if')
+        monthlySalary = salary;
+        salary = Math.round(salary / 12);
+        renderTotalMontly.innerHTML = formatAnnualSalary(salary);
+    } else {
+        monthlySalary = 0;
+        renderTotalMontly.innerHTML = salary;
+    }
 }
 
-// deletes a row when clicked
+// deletes a row when clicked, and updates monthly salary by targetting the column of the salary data, then subtracting from total monthly
 function deleteRow(event) {
+    let newMonthlySalary = monthlySalary - Number(event.target.parentElement.parentElement.children[4].textContent.replace(/\$|,/g, ''));
+    monthlyBudget(newMonthlySalary);
     event.target.parentElement.parentElement.remove();
 }
 
