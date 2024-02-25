@@ -2,6 +2,8 @@ console.log('hello');
 
 let monthlySalary = 0;
 let employeeTable = document.querySelector('#employee-data-table');
+let budgetStatus = false;
+let budgetStyle = document.querySelector('#budget-style');
 
 function submitEmployeeData(event) {
     event.preventDefault();
@@ -21,6 +23,7 @@ function submitEmployeeData(event) {
     monthlySalary = Number(monthlySalary);
     monthlySalary += annualSalary;
     monthlyBudget(monthlySalary);
+    checkStatus();
 
     // clear inputs
     clearInputFields();
@@ -30,11 +33,9 @@ function submitEmployeeData(event) {
 function monthlyBudget(salary) {
     renderTotalMontly = document.querySelector('#monthly-salary-cost');
     if(salary === monthlySalary) {
-        console.log('first if');
         salary = Math.round(salary / 12);
         renderTotalMontly.innerHTML = formatAnnualSalary(salary);
     } else if(salary < monthlySalary && salary > 0) {
-        console.log('second if')
         monthlySalary = salary;
         salary = Math.round(salary / 12);
         renderTotalMontly.innerHTML = formatAnnualSalary(salary);
@@ -48,6 +49,7 @@ function monthlyBudget(salary) {
 function deleteRow(event) {
     let newMonthlySalary = monthlySalary - Number(event.target.parentElement.parentElement.children[4].textContent.replace(/\$|,/g, ''));
     monthlyBudget(newMonthlySalary);
+    checkStatus();
     event.target.parentElement.parentElement.remove();
 }
 
@@ -83,4 +85,14 @@ function clearInputFields() {
     document.querySelector('#id-number').value='';
     document.querySelector('#job-title').selectedIndex = 0;
     document.querySelector('#annual-salary').value='';
+}
+
+function checkStatus() {
+    if(monthlySalary / 12 > 20000) {
+        overBudget = true;
+        budgetStyle.classList.add('over-budget');
+    } else {
+        overBudget = false;
+        budgetStyle.classList.add('under-budget');
+    }
 }
