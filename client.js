@@ -3,7 +3,6 @@ console.log('hello');
 let monthlySalary = 0;
 let employeeTable = document.querySelector('#employee-data-table');
 let budgetStatus = false;
-let budgetStyle = document.querySelector('#budget-style');
 
 function submitEmployeeData(event) {
     event.preventDefault();
@@ -15,7 +14,7 @@ function submitEmployeeData(event) {
     let jobTitle = document.querySelector('#job-title').value;
     let annualSalary = document.querySelector('#annual-salary').value;
     
-    // display data on screen whilealso formatting salary corrertly
+    // display data on screen while also formatting salary corrertly
     renderEmployeeData(firstName, lastName, employeeID, jobTitle, formatAnnualSalary(annualSalary));
 
     // make salary a number again and sum into total montly budget, then calculate total monthy budget
@@ -23,7 +22,7 @@ function submitEmployeeData(event) {
     monthlySalary = Number(monthlySalary);
     monthlySalary += annualSalary;
     monthlyBudget(monthlySalary);
-    checkStatus();
+    checkStatus(monthlySalary);
 
     // clear inputs
     clearInputFields();
@@ -49,7 +48,7 @@ function monthlyBudget(salary) {
 function deleteRow(event) {
     let newMonthlySalary = monthlySalary - Number(event.target.parentElement.parentElement.children[4].textContent.replace(/\$|,/g, ''));
     monthlyBudget(newMonthlySalary);
-    checkStatus();
+    checkStatus(newMonthlySalary);
     event.target.parentElement.parentElement.remove();
 }
 
@@ -87,12 +86,21 @@ function clearInputFields() {
     document.querySelector('#annual-salary').value='';
 }
 
-function checkStatus() {
-    if(monthlySalary / 12 > 20000) {
+function checkStatus(monthlySalary) {
+    let adjustedSalary = monthlySalary / 12;
+    let budgetStyle = document.querySelector('#budget-style');
+
+    if(adjustedSalary > 20000) {
+        console.log('here');
         overBudget = true;
         budgetStyle.classList.add('over-budget');
+        budgetStyle.classList.remove('under-budget');
+
     } else {
+        console.log('no here');
         overBudget = false;
         budgetStyle.classList.add('under-budget');
+        budgetStyle.classList.remove('over-budget');
+
     }
 }

@@ -33,6 +33,11 @@ th, td {
     border-bottom: 1px solid #ddd;
   }
 
+footer {
+    width: 200px;
+    padding: 8px;
+}
+
 .over-budget {
     background: red;
     color: white;
